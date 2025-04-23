@@ -4,8 +4,10 @@ public class Product {
     private double price; // Price of the product
     private int quantity; // Quantity available in stock
 
-    // Constructor
-    public Product(String name, double price, int quantity) {
+    public Product(String name, double price, int quantity) throws InvalidPriceException {
+        if (price < 0) {
+            throw new InvalidPriceException("Price cannot be negative.");
+        }
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -24,7 +26,10 @@ public class Product {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price) throws InvalidPriceException {
+        if (price < 0) {
+            throw new InvalidPriceException("Price cannot be negative.");
+        }
         this.price = price;
     }
 
